@@ -45,6 +45,11 @@ map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- diffview.nvim
-map("n", "<leader>gdo", ":DiffviewOpen<CR>") -- git show differents
-map("n", "<leader>gdc", ":DiffviewClose<CR>") -- git show differents
+-- map("n", "<leader>gdo", ":DiffviewOpen<CR>") -- git show differents
+-- map("n", "<leader>gdc", ":DiffviewClose<CR>") -- git show differents
 
+-- Navigate buffers
+map("n", "<S-l>", ":bnext<CR>")
+map("n", "<S-h>", ":bprevious<CR>")
+
+map("n", "<Leader>q", ":Bdelete<CR>")

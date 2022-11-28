@@ -39,7 +39,8 @@ packer.startup(function(use)
   use('numToStr/Comment.nvim') 
 
   -- file explorer
-  use('nvim-tree/nvim-tree.lua')
+  -- use('nvim-tree/nvim-tree.lua')
+  use("kyazdani42/nvim-tree.lua")
 
   -- icons
   use('kyazdani42/nvim-web-devicons')
@@ -50,9 +51,9 @@ packer.startup(function(use)
   -- fuzzy finding
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
+  use("nvim-telescope/telescope-media-files.nvim")
   -- use("nvim-telescope/telescope-file-browser.nvim")
 
-  use("nvim-treesitter/nvim-treesitter") -- Treesitter Syntax Highlighting
   use("nvim-telescope/telescope-live-grep-args.nvim")
 
   -- autocompletion
@@ -77,8 +78,26 @@ packer.startup(function(use)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
   -- git
-  use("airblade/vim-gitgutter")
-  use("sindrets/diffview.nvim")
+  -- use("airblade/vim-gitgutter")
+  -- use("sindrets/diffview.nvim")
+  use("lewis6991/gitsigns.nvim")
+
+  -- managing buffers
+  use("akinsho/bufferline.nvim")
+  use("moll/vim-bbye")
+
+    -- treesitter configuration
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = function()
+      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+      ts_update()
+    end,
+  })
+
+  -- auto closing
+  use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
   if packer_bootstrap then
     require("packer").sync()

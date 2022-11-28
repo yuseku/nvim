@@ -1,4 +1,4 @@
--- Vanilla Config
+-- vanilla Config
 require('ys.settings')
 require('ys.keybinds')
 require('ys.plugins-setup')
@@ -14,3 +14,8 @@ require('ys.plugins.lsp.mason')
 require('ys.plugins.lsp.lspsaga')
 require('ys.plugins.lsp.lspconfig')
 require('ys.plugins.transparent')
+require("ys.plugins.bufferline")
+require("ys.plugins.gitsigns")
+require("ys.plugins.gitsigns")
+require("ys.plugins.autopairs")
+require("ys.plugins.treesitter")
