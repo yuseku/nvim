@@ -24,6 +24,7 @@ packer.startup(function(use)
 
   -- colorscheme
   use('gruvbox-community/gruvbox')
+  use("xiyaowong/nvim-transparent")
 
   -- tmux & split window navigation
   use('christoomey/vim-tmux-navigator')
@@ -52,6 +53,7 @@ packer.startup(function(use)
   -- use("nvim-telescope/telescope-file-browser.nvim")
 
   use("nvim-treesitter/nvim-treesitter") -- Treesitter Syntax Highlighting
+  use("nvim-telescope/telescope-live-grep-args.nvim")
 
   -- autocompletion
   use("hrsh7th/nvim-cmp") -- completion plugin
@@ -73,6 +75,10 @@ packer.startup(function(use)
   use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
   use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
+  -- git
+  use("airblade/vim-gitgutter")
+  use("sindrets/diffview.nvim")
 
   if packer_bootstrap then
     require("packer").sync()

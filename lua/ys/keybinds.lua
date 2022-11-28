@@ -18,6 +18,9 @@ map('n', '<leader>tx', ':tabclose<CR>') -- close current tab
 map('n', '<leader>tn', ':tabn<CR>') -- go to next tab
 map('n', '<leader>tp', ':tabp<CR>') -- go to previous tab
 
+map("n", "<leader>ca", ":%y<CR>") -- yank all lines
+map("n", "<leader>cap", "gg<S-v><S-g>p")
+
 -- plugin keymaps
 
 -- vim-maximizer
@@ -27,14 +30,21 @@ map('n', '<leader>sm', ':MaximizerToggle<CR>')
 map('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
+map("n", "<leader>ff", "<cmd>Telescope find_files no_ignore=true<cr>") -- find files within current working directory, respects .gitignore
+map("n", "<leader>fs", "<cmd>Telescope live_grep no_ignore=true<cr>") -- find string in current working directory as you type
+map("n", "<leader>fc", "<cmd>Telescope grep_string no_ignore=true<cr>") -- find string under cursor in current working directory
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+
+map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 -- telescope git commands (not on youtube nvim video)
 map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 map("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+
+-- diffview.nvim
+map("n", "<leader>gdo", ":DiffviewOpen<CR>") -- git show differents
+map("n", "<leader>gdc", ":DiffviewClose<CR>") -- git show differents
+
