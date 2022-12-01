@@ -2,6 +2,8 @@
 require('ys.settings')
 require('ys.keybinds')
 require('ys.plugins-setup')
+require("ys.plugins.dracula")
+require("ys.plugins.tokyonight")
 require('ys.colorscheme')
 
 -- plugins

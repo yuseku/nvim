@@ -41,6 +41,13 @@ opt.splitbelow = true
 
 -- other
 opt.iskeyword:append('-')
+opt.title = true
+
+-- vim.cmd[[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- remove background
+-- vim.cmd("hi EndOfBuffer guibg=NONE ctermbg=NONE") -- remove background
+-- vim.cmd('let g:tokyonight_transparent = 1')
+vim.cmd('let g:dracula_colorterm = 0')
 
 -- map <leader> to space
 g.mapleader = ' '

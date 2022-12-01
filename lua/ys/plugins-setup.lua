@@ -23,6 +23,9 @@ packer.startup(function(use)
   use("PotatoesMaster/i3-vim-syntax")
 
   -- colorscheme
+  use("catppuccin/nvim")
+  use("folke/tokyonight.nvim")
+  use("Mofiqul/dracula.nvim")
   use('gruvbox-community/gruvbox')
   use("xiyaowong/nvim-transparent")
 
@@ -85,6 +88,9 @@ packer.startup(function(use)
   -- managing buffers
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye")
+
+  -- color
+  use("norcalli/nvim-colorizer.lua")
 
     -- treesitter configuration
   use({

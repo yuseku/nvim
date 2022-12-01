@@ -28,8 +28,12 @@ map('n', '<leader>sm', ':MaximizerToggle<CR>')
 
 -- nvim-tree
 map('n', '<leader>e', ':NvimTreeToggle<CR>')
+map("n", "<leader>np", ":NvimTreeResize +10<CR>")
+map("n", "<leader>nm", ":NvimTreeResize -10<CR>")
 
 -- telescope
+local builtin = require('telescope.builtin')
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files{ path_display = { "truncate" } })
 map("n", "<leader>ff", "<cmd>Telescope find_files no_ignore=true<cr>") -- find files within current working directory, respects .gitignore
 map("n", "<leader>fs", "<cmd>Telescope live_grep no_ignore=true<cr>") -- find string in current working directory as you type
 map("n", "<leader>fc", "<cmd>Telescope grep_string no_ignore=true<cr>") -- find string under cursor in current working directory
