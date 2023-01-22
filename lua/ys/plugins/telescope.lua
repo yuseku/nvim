@@ -12,7 +12,11 @@ if not actions_setup then
   return
 end
 
-local lga_actions = require("telescope-live-grep-args.actions")
+local lga_actions_setup, lga_actions = pcall(require, "telescope-live-grep-args.actions")
+if not lga_actions_setup then
+  print("telescope live grep actions not found!")
+  return
+end
 
 -- configure telescope
 
@@ -31,7 +35,17 @@ local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
   defaults = {
-
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--no-ignore', -- **This is the added flag**
+      '--hidden' -- **Also this flag. The combination of the two is the same as `-uu`**
+    },
     prompt_prefix = " ",
     selection_caret = " ",
     -- path_display = { "smart" },
@@ -102,29 +116,35 @@ telescope.setup({
       },
     },
   },
-  -- pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
-  -- },
   extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    },
-    media_files = {
-        -- filetypes whitelist
-        -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-        filetypes = {"png", "webp", "jpg", "jpeg"},
-        find_cmd = "rg" -- find command (defaults to `fd`)
-      }
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      no_ignore = true,
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --no-ignore " }),
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
+    }
+    -- fzf = {
+    --   fuzzy = true,                    -- false will only do exact matching
+    --   override_generic_sorter = true,  -- override the generic sorter
+    --   override_file_sorter = true,     -- override the file sorter
+    --   case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+    --                                    -- the default case_mode is "smart_case"
+    -- },
+    -- media_files = {
+    --   -- filetypes whitelist
+    --   -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+    --   filetypes = {"png", "webp", "jpg", "jpeg"},
+    --   find_cmd = "rg" -- find command (defaults to `fd`)
+    -- }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -133,5 +153,5 @@ telescope.setup({
   },
 })
 
-telescope.load_extension('fzf')
-telescope.load_extension('media_files')
+-- telescope.load_extension('fzf')
+-- telescope.load_extension('media_files')

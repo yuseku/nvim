@@ -1,31 +1,35 @@
+-- Copyright (c) 2020-2021 hoob3rt
+-- MIT license, see LICENSE for more details.
+-- stylua: ignore
 local colors = {
-  gray       = '#44475a',
-  lightgray  = '#5f6a8e',
-  orange     = '#ffb86c',
-  purple     = '#bd93f9',
-  red        = '#ff5555',
-  yellow     = '#f1fa8c',
-  green      = '#50fa7b',
-  white      = '#f8f8f2',
-  black      = '#282a36',
+  black        = '#282828',
+  white        = '#ebdbb2',
+  red          = '#fb4934',
+  green        = '#b8bb26',
+  blue         = '#83a598',
+  yellow       = '#fe8019',
+  gray         = '#a89984',
+  darkgray     = '#3c3836',
+  lightgray    = '#504945',
+  inactivegray = '#7c6f64',
   innerbg    = nil,
 }
 
 return {
   normal = {
-    a = { bg = colors.purple, fg = colors.black, gui = 'bold' },
+    a = { bg = colors.gray, fg = colors.black, gui = 'bold' },
     b = { bg = colors.lightgray, fg = colors.white },
-    c = { bg = colors.innerbg, fg = colors.white },
+    c = { bg = colors.innerbg, fg = colors.gray },
   },
   insert = {
-    a = { bg = colors.green, fg = colors.black, gui = 'bold' },
+    a = { bg = colors.blue, fg = colors.black, gui = 'bold' },
     b = { bg = colors.lightgray, fg = colors.white },
     c = { bg = colors.innerbg, fg = colors.white },
   },
   visual = {
     a = { bg = colors.yellow, fg = colors.black, gui = 'bold' },
     b = { bg = colors.lightgray, fg = colors.white },
-    c = { bg = colors.innerbg, fg = colors.white },
+    c = { bg = colors.innerbg, fg = colors.black },
   },
   replace = {
     a = { bg = colors.red, fg = colors.black, gui = 'bold' },
@@ -33,13 +37,13 @@ return {
     c = { bg = colors.innerbg, fg = colors.white },
   },
   command = {
-    a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
+    a = { bg = colors.green, fg = colors.black, gui = 'bold' },
     b = { bg = colors.lightgray, fg = colors.white },
-    c = { bg = colors.innerbg, fg = colors.white },
+    c = { bg = colors.innerbg, fg = colors.black },
   },
   inactive = {
-    a = { bg = colors.gray, fg = colors.white, gui = 'bold' },
-    b = { bg = colors.lightgray, fg = colors.white },
-    c = { bg = colors.innerbg, fg = colors.white },
+    a = { bg = colors.darkgray, fg = colors.gray, gui = 'bold' },
+    b = { bg = colors.darkgray, fg = colors.gray },
+    c = { bg = colors.innerbg, fg = colors.gray },
   },
 }
