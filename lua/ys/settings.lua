@@ -34,7 +34,7 @@ opt.signcolumn = 'yes'
 opt.colorcolumn = "120"
 
 -- remove thin cursor in insert mode
-opt.guicursor = ""
+-- opt.guicursor = ""
 
 -- backspace
 opt.backspace = 'indent,eol,start'
@@ -56,8 +56,8 @@ opt.updatetime = 50
 opt.hlsearch = false
 opt.incsearch = true
 
--- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- remove background
--- vim.cmd('let g:dracula_colorterm = 0')
+-- transaprency
+g.transparent_enabled = true
 
 -- indentation by file type
 local function indentationByFile(fileType, indentationWidth)

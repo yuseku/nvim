@@ -1,3 +1,4 @@
+-- function to easier keymaps
 local function map(mode, key, value)
   vim.keymap.set(mode, key, value, { silent = true })
 end
@@ -5,7 +6,7 @@ end
 -- general keymaps
 
 -- remove highliting
-map('n', '<leader>nh', ':nohl<CR>')
+map("n", "<leader>nh", ":nohl<CR>")
 
 -- move commands
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -30,41 +31,34 @@ map({"n", "v"}, "<leader>d", [["_d]])
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- splits
-map('n', '<leader>sv', '<C-w>v') -- split window vertically
-map('n', '<leader>sh', '<C-w>s') -- split window horizontally
-map('n', '<leader>se', '<C-w>=') -- make splut windows equal width
-map('n', '<leader>sx', ':close<CR>') -- close current split window
+map("n", "<leader>sv", "<C-w>v") -- split window vertically
+map("n", "<leader>sh", "<C-w>s") -- split window horizontally
+map("n", "<leader>se", "<C-w>=") -- make splut windows equal width
+map("n", "<leader>sx", ":close<CR>") -- close current split window
 
 -- tabs
-map('n', '<leader>to', ':tabnew<CR>') -- open new tab
-map('n', '<leader>tx', ':tabclose<CR>') -- close current tab
-map('n', '<leader>tn', ':tabn<CR>') -- go to next tab
-map('n', '<leader>tp', ':tabp<CR>') -- go to previous tab
+map("n", "<leader>to", ":tabnew<CR>") -- open new tab
+map("n", "<leader>tx", ":tabclose<CR>") -- close current tab
+map("n", "<leader>tn", ":tabn<CR>") -- go to next tab
+map("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
 
 -- yanking
-map("n", "<leader>ca", ":%y<CR>") -- yank all lines
+map("n", "<leader>cal", ":%y<CR>") -- yank all lines
 map("n", "<leader>cap", "gg<S-v><S-g>p")
 
 -- plugin keymaps
 
 -- nvim-tree
-map('n', '<leader>e', ':NvimTreeToggle<CR>')
+map("n", "<leader>e", ":NvimTreeToggle<CR>")
 map("n", "<leader>np", ":NvimTreeResize +10<CR>")
 map("n", "<leader>nm", ":NvimTreeResize -10<CR>")
 
 -- fuzzy finding
-
--- project files 
-map("n", "<leader>pf", "<cmd>lua require('fzf-lua').files()<CR>")
-
--- git files 
-map("n", "<leader>gf", "<cmd>lua require('fzf-lua').resume()<CR>")
-
--- project search
-map("n", "<leader>ps", "<cmd>lua require('fzf-lua').grep({ cmd = 'rg --no-ignore' })<CR>")
-
--- search resume
-map("n", "<leader>sr", "<cmd>lua require('fzf-lua').resume()<CR>")
+map("n", "<leader>pf", "<cmd>lua require('fzf-lua').files()<CR>") -- project files
+map("n", "<leader>gf", "<cmd>lua require('fzf-lua').resume()<CR>") -- git files
+map("n", "<leader>ps", "<cmd>lua require('fzf-lua').grep({ cmd = 'rg --no-ignore' })<CR>") -- project search
+map("n", "<leader>psi", "<cmd>lua require('fzf-lua').grep()<CR>")
+map("n", "<leader>sr", "<cmd>lua require('fzf-lua').resume()<CR>") -- search resume
 
 -- git signs
 map("n", "<leader>gdt", ":Gitsigns diffthis<CR>") -- git show differents
@@ -77,3 +71,11 @@ map("n", "<C-h>", ":BufferLineMovePrev<CR>")
 
 -- close current buffer
 map("n", "<Leader>q", ":Bdelete<CR>")
+
+-- upload file to remote server
+map("n", "<Leader>up", ":Hupload<CR>")
+
+-- copilot
+vim.api.nvim_set_keymap("i", "<M-w>", "copilot#Accept('<CR>')", {expr=true, silent=true})
+vim.api.nvim_set_keymap("i", "<M-[>", "<Plug>(copilot-next)", { noremap = false })
+vim.api.nvim_set_keymap("i", "<M-]>", "<Plug>(copilot-previous)", { noremap = false })

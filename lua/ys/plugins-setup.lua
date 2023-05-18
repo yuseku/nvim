@@ -25,6 +25,7 @@ packer.startup(function(use)
   -- colorscheme
   use("xiyaowong/nvim-transparent")
   use('gruvbox-community/gruvbox')
+  -- use('AlphaTechnolog/pywal.nvim')
   -- use("Mofiqul/dracula.nvim")
   -- use("catppuccin/nvim")
   -- use("folke/tokyonight.nvim")
@@ -87,6 +88,21 @@ packer.startup(function(use)
 
   -- auto closing
   use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+
+  -- remote
+  use("hesselbom/vim-hsftp")
+
+  -- copilot
+  use("github/copilot.vim")
+
+  -- tool to refactoring
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
 
   if packer_bootstrap then
     require("packer").sync()

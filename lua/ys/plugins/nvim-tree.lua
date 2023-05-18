@@ -1,6 +1,6 @@
-local setup, nvimtree = pcall(require, 'nvim-tree')
+local setup, nvimtree = pcall(require, "nvim-tree")
 if not setup then
-  print('nvim-tree not installed!')
+  print("nvim-tree not installed!")
   return
 end
 
@@ -10,55 +10,11 @@ if not config_status_ok then
   return
 end
 
--- -- recommended settings from nvim-tree documentation
--- vim.g.loaded = 1
--- vim.g.loaded_netrwPlugin = 1
---
--- -- change color for arrows in tree to light blue
--- -- vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
---
--- nvimtree.setup({
---   update_focused_file = {
---     enable = true,
---     update_cwd = true,
---   },
---   -- change folder arrow icons
---   renderer = {
---     icons = {
---       glyphs = {
---         folder = {
---           arrow_closed = "", -- arrow when folder is closed
---           arrow_open = "", -- arrow when folder is open
---         },
---       },
---     },
---   },
---   -- disable window_picker for
---   -- explorer to work well with
---   -- window splits
---   actions = {
---     open_file = {
---       window_picker = {
---         enable = false,
---       },
---     },
---   },
---   git = {
---     ignore = false,
---   },
--- })
-
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvimtree.setup {
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = false,
-    ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-    },
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = true,
@@ -136,6 +92,8 @@ nvimtree.setup {
                     empty = "",
                     empty_open = "",
                     symlink = "",
+                    -- arrow_closed = "X", -- arrow when folder is closed
+                    -- arrow_open = "", -- arrow when folder is open
                 },
             }
         }
